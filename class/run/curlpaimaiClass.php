@@ -28,14 +28,14 @@ class curlpaimaiClass extends baseClass
             'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36'
         ];
 
-        $pub_data = $this->dbm->get('collect_data', ['pub_time'], [
+        $pub_data = $this->dbm->get('collect_data', ['pub_date'], [
             'AND' => [
                 'pid' => 24
             ],
             'ORDER' => [
                 'id' => 'DESC'
             ]]);
-        $pub_day = $pub_data['pub_time'];
+        $pub_day = $pub_data['pub_date'];
 
         for($i=0;$i>=0;$i++)
         {
@@ -129,7 +129,7 @@ class curlpaimaiClass extends baseClass
                     $add_data = [
                         'pid' => 24,
                         'url' => $real_url,
-                        'pub_time' => $publishDate,
+                        'pub_date' => $publishDate,
                         'title' => $res['name'],
                         'file_data' => json_encode($file_data,JSON_UNESCAPED_UNICODE),
                         'content' => htmlspecialchars_decode($content),

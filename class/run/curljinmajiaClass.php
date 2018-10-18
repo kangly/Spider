@@ -76,7 +76,7 @@ class curljinmajiaClass extends baseClass
                 $add_data = [
                     'pid' => 27,
                     'url' => $view_url,
-                    'pub_time' => $this_day,
+                    'pub_date' => $this_day,
                     'title' => $v['title'],
                     'content' => htmlspecialchars_decode($view_data[0]['content']),
                     'module_id' => 27,//拍卖

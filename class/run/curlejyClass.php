@@ -31,14 +31,14 @@ class curlejyClass extends baseClass
             'http://www.ejy365.com/jygg_more?categoryname=%E9%97%B2%E7%BD%AE%E8%B5%84%E4%BA%A7&s2=%25&s1=%25&s0=%25&orderType=orderType3_down&conditionopen=1&page='
         ];
 
-        $pub_data = $this->dbm->get('collect_data', ['pub_time'], [
+        $pub_data = $this->dbm->get('collect_data', ['pub_date'], [
             'AND' => [
                 'pid' => 26
             ],
             'ORDER' => [
                 'id' => 'DESC'
             ]]);
-        $pub_day = $pub_data['pub_time'];
+        $pub_day = $pub_data['pub_date'];
         $pub_date = strtotime($pub_day);
 
         foreach($url_data as $v)
@@ -172,7 +172,7 @@ class curlejyClass extends baseClass
                         $add_data = [
                             'pid' => 26,
                             'url' => $view_url,
-                            'pub_time' => $this_day,
+                            'pub_date' => $this_day,
                             'title' => $l['title'],
                             'img_data' => json_encode($img_data,JSON_UNESCAPED_UNICODE),
                             'file_data' => json_encode($file_data,JSON_UNESCAPED_UNICODE),

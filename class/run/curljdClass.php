@@ -35,14 +35,14 @@ class curljdClass extends baseClass
             'http://paimai.jd.com/json/noticeJson?publishSource=9&page='
         ];
 
-        $pub_data = $this->dbm->get('collect_data', ['pub_time'], [
+        $pub_data = $this->dbm->get('collect_data', ['pub_date'], [
             'AND' => [
                 'pid' => 25
             ],
             'ORDER' => [
                 'id' => 'DESC'
             ]]);
-        $pub_day = $pub_data['pub_time'];
+        $pub_day = $pub_data['pub_date'];
         $pub_date = strtotime($pub_day);
 
         foreach($url_data as $v)
@@ -145,7 +145,7 @@ class curljdClass extends baseClass
                             $add_data = [
                                 'pid' => 25,
                                 'url' => $view_url,
-                                'pub_time' => $time,
+                                'pub_date' => $time,
                                 'title' => $view_data['title'],
                                 'province_id' => $area_province['areaid']>0?$area_province['areaid']:0,
                                 'city' => $city,

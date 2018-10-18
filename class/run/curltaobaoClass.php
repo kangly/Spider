@@ -29,14 +29,14 @@ class curltaobaoClass extends baseClass
             'https://zc-paimai.taobao.com/zc/noticeList.htm'
         ];
 
-        $pub_data = $this->dbm->get('collect_data', ['pub_time'], [
+        $pub_data = $this->dbm->get('collect_data', ['pub_date'], [
             'AND' => [
                 'pid' => 23
             ],
             'ORDER' => [
                 'id' => 'DESC'
             ]]);
-        $pub_day = $pub_data['pub_time'];
+        $pub_day = $pub_data['pub_date'];
 
         foreach($url_data as $v)
         {
@@ -341,7 +341,7 @@ class curltaobaoClass extends baseClass
                             $add_data = [
                                 'pid' => 23,
                                 'url' => $url,
-                                'pub_time' => $m['time'],
+                                'pub_date' => $m['time'],
                                 'title' => $view_array[0]['title'],
                                 'img_data' => json_encode($img_data,JSON_UNESCAPED_UNICODE),
                                 'file_data' => json_encode($file_data,JSON_UNESCAPED_UNICODE),

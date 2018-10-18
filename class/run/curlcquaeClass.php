@@ -39,14 +39,14 @@ class curlcquaeClass extends baseClass
         $ctl00_ContentPlaceHolder1_dpWasteType_dropdown_hfComboValue = '';
         $url = 'http://www.recycle.cquae.com/Trade_Announcement/AnnouncementList.aspx?mid=1107131&fid=0';
 
-        $pub_data = $this->dbm->get('collect_data', ['pub_time'], [
+        $pub_data = $this->dbm->get('collect_data', ['pub_date'], [
             'AND' => [
                 'pid' => 29
             ],
             'ORDER' => [
                 'id' => 'DESC'
             ]]);
-        $pub_day = $pub_data['pub_time'];
+        $pub_day = $pub_data['pub_date'];
         $pub_date = strtotime($pub_day);
 
         for($i=1;$i>0;$i++)
@@ -257,7 +257,7 @@ class curlcquaeClass extends baseClass
                     $add_data = [
                         'pid' => 29,
                         'url' => $view_url,
-                        'pub_time' => $this_day,
+                        'pub_date' => $this_day,
                         'title' => $v['title'],
                         'img_data' => json_encode($img_data,JSON_UNESCAPED_UNICODE),
                         'file_data' => json_encode($file_data,JSON_UNESCAPED_UNICODE),
