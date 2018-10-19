@@ -19,3 +19,8 @@ php curlahyx.php
 /www/wwwroot/Spider/run 下创建执行文件，参考curlahyx.php
 /www/wwwroot/Spider/class 下创建调用文件，参考curlahyxClass.php
 ```
+
+#### 引入的扩展
+[Medoo](https://github.com/catfan/Medoo)
+[QueryList](https://github.com/jae-jae/QueryList)
+[monolog](https://github.com/Seldaek/monolog)
