@@ -24,6 +24,12 @@ class curltaobaoClass extends baseClass
         $this_time = strtotime($this_day);
         $file_path = SPIDER_FILE_SAVE_URL.'/Upload/'.date('Ymd');
 
+        $params = [];
+        $headers = [
+            'Content-Type: text/json;charset=UTF-8',
+            'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36'
+        ];
+
         $url_data = [
             'https://sf.taobao.com/notice_list.htm',
             'https://zc-paimai.taobao.com/zc/noticeList.htm'
@@ -125,6 +131,15 @@ class curltaobaoClass extends baseClass
                     {
                         if(!$this->load_task_state(23)){
                             exit;
+                        }
+
+                        //去掉房产信息
+                        sleep(3);
+                        $ct_url = 'https://sf.taobao.com/json/getGovItemSummary.htm?itemId='.$n['id'];
+                        $ct_json_data = http_get($ct_url,$params,$headers);
+                        $ct_data = json_decode($ct_json_data,true);
+                        if($ct_data['catId']==50025969){
+                            continue;
                         }
 
                         //真正的抓取url,前面都是为了获取该url
